@@ -22,6 +22,7 @@ public class Producto {
 	private int valorVenta;
 	private int cantidad;
 	private int codigo;
+	private String nombreProd;
 	
 	public Producto() {
 		this.valorInversion = 0;
@@ -30,11 +31,12 @@ public class Producto {
 		this.codigo = 0;
 	}
 	
-	public Producto(int valorInversion, int valorVenta, int cantidad, int codigo) {
+	public Producto(String nombreProd, int valorInversion, int valorVenta, int cantidad, int codigo) {
 		this.valorInversion = valorInversion;
 		this.valorVenta = valorVenta;
 		this.cantidad = cantidad;
 		this.codigo = codigo;
+		this.setNombreProd(nombreProd);
 	}
 	
 	public int getValorInversion() {
@@ -69,23 +71,36 @@ public class Producto {
 		this.codigo = codigo;
 	}
 
-	protected static int generarCodProd(int cant) {
-		Random r = new Random();
-		int codigo = r.nextInt(cant)+1;
-		return codigo;
+
+
+	public String getNombreProd() {
+		return nombreProd;
+	}
+
+	public void setNombreProd(String nombreProd) {
+		this.nombreProd = nombreProd;
+	}
+	
+	public String getTipoProd() {
+		return null;
+	}
+	
+	public int getCodProd() {
+		return 0;
 	}
 }
 
 
 class Electrodomestico extends Producto{
 	
-	private static int codProd = generarCodProd(10);
+	private int codProd;
+	
 	private int tipoProd;
 	
-	public Electrodomestico(int tipoProd, int valorInversion, int valorVenta, int cantidad) {
-		super(valorInversion, valorVenta, cantidad, codProd);
+	public Electrodomestico(String nombreProd, int tipoProd, int valorInversion, int valorVenta, int cantidad, int codProd) {
+		super(nombreProd, valorInversion, valorVenta, cantidad, codProd);
 		this.tipoProd = tipoProd;
-
+		this.codProd = codProd;
 	}
 
 	public String getTipoProd() {
@@ -111,17 +126,21 @@ class Electrodomestico extends Producto{
 		this.tipoProd = tipoProd;
 	}
 	
-	
+	public int getCodProd() {
+		return codProd;
+	}
+
 }
 
 class Tecnologia extends Producto{
 	
-	private static int codProd = generarCodProd(10);
+	private int codProd;
 	private int tipoProd;
 	
-	public Tecnologia(int tipoProd, int valorInversion, int valorVenta, int cantidad) {
-		super(valorInversion, valorVenta, cantidad, codProd);
+	public Tecnologia(String nombreProd, int tipoProd, int valorInversion, int valorVenta, int cantidad, int codProd) {
+		super(nombreProd, valorInversion, valorVenta, cantidad, codProd);
 		this.tipoProd = tipoProd;
+		this.codProd = codProd;
 	}
 
 	public String getTipoProd() {
@@ -146,15 +165,20 @@ class Tecnologia extends Producto{
 	public void setTipoProd(int tipoProd) {
 		this.tipoProd = tipoProd;
 	}
+	
+	public int getCodProd() {
+		return codProd;
+	}
 }
 
 class Decoracion extends Producto{
 
-	private static int codProd = generarCodProd(10);
+	private int codProd;
 	private int tipoProd;
 	
-	public Decoracion(int tipoProd, int valorInversion, int valorVenta, int cantidad) {
-		super(valorInversion, valorVenta, cantidad, codProd);
+	public Decoracion(String nombreProd, int tipoProd, int valorInversion, int valorVenta, int cantidad, int codProd) {
+		super(nombreProd, valorInversion, valorVenta, cantidad, codProd);
+		this.codProd = codProd;
 		this.tipoProd = tipoProd;
 	}
 
@@ -179,5 +203,9 @@ class Decoracion extends Producto{
 
 	public void setTipoProd(int tipoProd) {
 		this.tipoProd = tipoProd;
+	}
+	
+	public int getCodProd() {
+		return codProd;
 	}
 }
